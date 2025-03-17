@@ -27,7 +27,7 @@ namespace CS2Assist {
 
     struct Entity {
         std::string name;
-        Vec3 position;
+        Vec3 lastPosition;
         Vec3 velocity;
         Vec3 acceleration;
         Angle cameraAngle;
@@ -40,11 +40,21 @@ namespace CS2Assist {
         uint64_t pawnAddr;
         bool isValid;
 
-        Entity() : name("Unknown"), position(), velocity(), acceleration(),
-            cameraAngle(), eyeAngle(), cameraPosition(), health(0),
-            weaponName("None"), teamId(0), controllerAddr(0), pawnAddr(0),
+        Entity() :
+            name("Unknown"),
+            lastPosition(),
+            velocity(),
+            acceleration(),
+            cameraAngle(),
+            eyeAngle(),
+            cameraPosition(),
+            health(0),
+            weaponName("None"),
+            teamId(0),
+            controllerAddr(0),
+            pawnAddr(0),
             isValid(false) {
-        }
+        };
     };
 
     class EntityMgr {

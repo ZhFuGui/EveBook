@@ -9,20 +9,16 @@ namespace CS2Assist {
 
     class ProcessUtil {
     public:
-        // 获取进程PID
         static DWORD GetProcessPid(const std::wstring& processName);
-            
-        // 获取进程模块句柄
         static HMODULE GetModuleHandle(HANDLE processHandle, const std::string& moduleName);
-
-        // 读取内存
-        static bool ReadMemory(HANDLE processHandle, LPCVOID address, LPVOID buffer, SIZE_T size);
-
-        // 写入内存
-        static bool WriteMemory(HANDLE processHandle, LPVOID address, LPCVOID buffer, SIZE_T size);
+        static bool ScanSignature(HANDLE processHandle, HMODULE clientModule, const char* signature, uint64_t& resultAddr);
 
     private:
         ProcessUtil() = delete; // 禁止实例化，仅提供静态方法
+
+        static bool BytesToHexString(const BYTE* bytes, char* output, size_t length);
+        static bool CompareSignature(const char* pattern, const char* data, size_t length);
+        static char* RemoveSpaces(const char* input);
     };
 
 } // namespace CS2Assist

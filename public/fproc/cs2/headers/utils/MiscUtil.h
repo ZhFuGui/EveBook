@@ -6,10 +6,14 @@
 
 namespace CS2Assist {
 
-	constexpr double M_PI = 3.14159265358979323846;
+    BOOL ByteToChar(BYTE* byteCode, char* strCode, int codeLen);
+    
 
-	// 计算自瞄修正角度
-	Angle CalcAimCorrection(const Vec3& myPos, const Vec3& enemyPos, const Angle& myviewAngle, const Angle& enemyviewAngle);
+    BOOL cmpStrCode(char* code, char* readStr, int cmpLen);
+   
+
+    BOOL scanGameCode(HANDLE hProcess, uint64_t beginAddr, uint64_t endAddr, char* code, int codeLen, DWORD64& retAddr); 
+
 
 } // namespace CS2Assist
 
